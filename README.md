@@ -1,6 +1,6 @@
 <img src=hawkbit_logo.png width=533 height=246 />
 
-# Eclipse hawkBit™ - Update Server
+# Eclipse hawkBit™ - Update Server - TEST
 
 Eclipse [hawkBit](http://www.eclipse.org/hawkbit/index.html) is an domain independent back end solution for rolling out software updates to constrained edge devices as well as more powerful controllers and gateways connected to IP based networking infrastructure.
 
@@ -38,6 +38,7 @@ In addition the following vendors offer free trial accounts for their hawkBit co
 - [Kynetics Update Factory](https://www.kynetics.com/iot-platform-update-factory)
 
 # Device Integration
+
 hawkBit exposes HTTP/JSon based [Direct Device Integration (API) API](https://www.eclipse.org/hawkbit/apis/ddi_api/) that allow any update client to integrate quite easily.
 
 The [Eclipse Hara subproject](https://projects.eclipse.org/projects/iot.hawkbit.hara) aims to provide a reference agent software implementation of the Eclipse hawkBit device API. At the moment the project provides the [hara-ddiclient](https://github.com/eclipse/hara-ddiclient) Kotlin library that facilitates and speeds up the development of DDI API clients running on the JVM. The library is expected to soon see its first release under the Eclipse umbrella, and has been successfully used in production for years under its previous guise.
@@ -57,14 +58,14 @@ There are clients outside of the Eclipse IoT eco system as well, e.g.:
 
 ## SQL database
 
-| Database                          |                           H2                           |                                MySQL/MariaDB                                |                          MS SQL Server                           |                                  PostgreSQL                        |      IBM DB2       |
+| Database                          |                           H2                           |                                MySQL/MariaDB                                |                          MS SQL Server                           |                             PostgreSQL                             |      IBM DB2       |
 | --------------------------------- | :----------------------------------------------------: | :-------------------------------------------------------------------------: | :--------------------------------------------------------------: | :----------------------------------------------------------------: | :----------------: |
-| DDLs maintained by project        |                   :white_check_mark:                   |                             :white_check_mark:                              |                       :white_check_mark:                         |                              :white_check_mark:                    | :white_check_mark: |
-| Test dependencies defined         |                   :white_check_mark:                   |                             :white_check_mark:                              |                       :white_check_mark:                         |                              :white_check_mark:                    |                    |
-| Versions tested                   |                          1.4                           |                          MySQL 5.6/5.7, AWS Aurora                          |                       MS SQL Server 2017/2019                    |                                PostgreSQL 12/13                    |  DB2 Server v11.1  |
-| Docker image with driver provided |                   :white_check_mark:                   |                     :white_check_mark: (Tag: "-mysql")                      |                       :white_check_mark:                         |                              :white_check_mark:                    |                    |
+| DDLs maintained by project        |                   :white_check_mark:                   |                             :white_check_mark:                              |                        :white_check_mark:                        |                         :white_check_mark:                         | :white_check_mark: |
+| Test dependencies defined         |                   :white_check_mark:                   |                             :white_check_mark:                              |                        :white_check_mark:                        |                         :white_check_mark:                         |                    |
+| Versions tested                   |                          1.4                           |                          MySQL 5.6/5.7, AWS Aurora                          |                     MS SQL Server 2017/2019                      |                          PostgreSQL 12/13                          |  DB2 Server v11.1  |
+| Docker image with driver provided |                   :white_check_mark:                   |                     :white_check_mark: (Tag: "-mysql")                      |                        :white_check_mark:                        |                         :white_check_mark:                         |                    |
 | JDBC driver                       | [H2 1.4.200](https://github.com/h2database/h2database) | [MariaDB Connector/J 2.6.2](https://github.com/MariaDB/mariadb-connector-j) | [MSSQL-JDBC 7.4.1.jre8](https://github.com/Microsoft/mssql-jdbc) | [PostgreSQL JDBC Driver 42.2.14](https://github.com/pgjdbc/pgjdbc) |                    |
-| Status                            |                    Test, Dev                           |                              Production grade                               |                     Production grade                             |                                   Test, Dev                        |      Test, Dev     |
+| Status                            |                       Test, Dev                        |                              Production grade                               |                         Production grade                         |                             Test, Dev                              |     Test, Dev      |
 
 ## (Optional) RabbitMQ: 3.6,3.7,3.8
 
