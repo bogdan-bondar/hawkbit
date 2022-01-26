@@ -1,6 +1,6 @@
 <img src=hawkbit_logo.png width=533 height=246 />
 
-# Eclipse hawkBit™ - Update Server - TEST-test
+# Eclipse hawkBit™ - Update Server - TEST-test-test
 
 Eclipse [hawkBit](http://www.eclipse.org/hawkbit/index.html) is an domain independent back end solution for rolling out software updates to constrained edge devices as well as more powerful controllers and gateways connected to IP based networking infrastructure.
 
