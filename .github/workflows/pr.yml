@@ -1,0 +1,48 @@
+name: PR
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'checked')
+    services:
+      rabbitmq:
+        image: rabbitmq:3-management
+        env:
+          RABBITMQ_DEFAULT_VHOST: /
+        ports:
+          - 5672:5672
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: zulu
+          java-version: 11
+          java-package: jdk
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Install dependencies without testing
+        run: mvn install --batch-mode -DskipTests
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_ACCESS_TOKEN: ${{ secrets.SONAR_ACCESS_TOKEN }}
+        run: mvn verify license:check javadoc:javadoc sonar:sonar -Dsonar.login=$SONAR_ACCESS_TOKEN --batch-mode
